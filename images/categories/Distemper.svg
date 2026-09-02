@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="480" viewBox="0 0 640 480">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="640" y2="480" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#12968a"/>
+      <stop offset="1" stop-color="#0b4c86"/>
+    </linearGradient>
+    <linearGradient id="gbase" x1="0" y1="0" x2="640" y2="480" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#182c45"/>
+      <stop offset="1" stop-color="#0f1c2e"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="38%" r="65%">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="640" height="480" fill="url(#gbase)"/>
+  <g opacity="0.9"><polygon points="0.0,0.0 396.8,0.0 243.2,480.0" fill="url(#g1)" opacity="0.9"/>
+<polygon points="396.8,0.0 640.0,0.0 640.0,264.0 243.2,480.0" fill="url(#g1)" opacity="1"/>
+<polygon points="0.0,0.0 243.2,480.0 0.0,480.0" fill="url(#g1)" opacity="0.75"/></g>
+  <rect width="640" height="480" fill="url(#glow)"/>
+  <g transform="translate(320.0,240.0) scale(1.25)">
+    
+<g stroke="#f7f8f6" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M-55,-10 L55,-10 L45,75 C45,85 -45,85 -45,75 Z" fill="#f7f8f6" fill-opacity="0.1"/>
+  <ellipse cx="0" cy="-10" rx="55" ry="13" fill="#f7f8f6" fill-opacity="0.12" stroke="#f7f8f6"/>
+  <path d="M-40,-10 C-40,-30 40,-30 40,-10" stroke-opacity="0.7"/>
+  <g transform="translate(20,-70) rotate(-10)">
+    <rect x="-34" y="-10" width="68" height="20" rx="4" fill="#7be69a" fill-opacity="0.9" stroke="#f7f8f6"/>
+    <rect x="-8" y="8" width="16" height="34" rx="4" fill="#f7f8f6" fill-opacity="0.85" stroke="none"/>
+  </g>
+</g>
+  </g>
+</svg>
