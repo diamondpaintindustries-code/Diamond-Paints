@@ -31,27 +31,7 @@
 </head>
 <body class="home">
 
-<script>
-  // Runs synchronously before paint: prevents any flash of the cinematic
-  // hero for repeat visits in this session, or for reduced-motion users —
-  // the page drops straight into the settled, fully-revealed state.
-  (function () {
-    // ?intro=force (or #intro=force) in the URL always replays the full
-    // animation — bypasses prefers-reduced-motion and the "seen this
-    // session" flag. Handy for testing, since a plain refresh alone does
-    // not clear sessionStorage.
-    var forcePlay = /[?&#]intro=force\b/.test(window.location.href);
-    var reduce = !forcePlay && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var played = false;
-    try { played = !forcePlay && sessionStorage.getItem('dp_intro_played_v3') === '1'; } catch (e) {}
-    if (reduce || played) {
-      document.write('<style>#cinema-hero{height:auto;min-height:0;}#cinema-hero .intro-loading,#cinema-hero #intro-canvas,#cinema-hero .intro-skip{display:none !important;}#cinema-hero.static-ready{padding:150px 0 90px;}</style>');
-      document.documentElement.setAttribute('data-intro', 'skip');
-    }
-  })();
-</script>
-
-<!-- ============ NAV (overlays the cinematic hero, revealed once inside the house) ============ -->
+<!-- ============ NAV (overlays the video hero, revealed 5s in) ============ -->
 <nav class="nav nav-overlay" id="site-nav">
   <div class="nav-inner">
     <a href="index.html" class="brand">
@@ -69,20 +49,16 @@
   </div>
 </nav>
 
-<!-- ============ CINEMATIC VILLA-TO-INTERIOR HERO ============
-     Drone orbit over a luxury villa → descent to the entrance → the
-     door opens → the camera travels inside → the Diamond Paints
-     homepage reveals itself inside the lit interior. -->
+<!-- ============ VIDEO HERO ============
+     Real footage of the villa plays full-screen, undistracted, for the
+     first 5 seconds. After that the nav and homepage content ease in
+     over a dimmed, looping version of the same video running behind them. -->
 <section id="cinema-hero" class="cinema-hero">
-  <canvas id="intro-canvas"></canvas>
-  <div class="cinema-veil" id="cinema-veil"></div>
-
-  <div class="intro-loading" id="intro-loading">
-    <div class="intro-spinner"></div>
-    <span>DIAMOND PAINTS</span>
-  </div>
-
-  <button type="button" id="intro-skip" class="intro-skip">Skip Intro ✕</button>
+  <video id="hero-video" class="hero-video" autoplay muted loop playsinline
+         poster="video/hero-villa-poster.jpg">
+    <source src="video/hero-villa.mp4" type="video/mp4">
+  </video>
+  <div class="hero-video-scrim"></div>
 
   <div class="cinema-content" id="cinema-content">
     <span class="cinema-wordmark">DIAMOND&nbsp;PAINTS</span>
@@ -289,29 +265,7 @@
   </div>
 </footer>
 
-<script src="js/vendor/three.min.js?v=3"></script>
-<script>
-  // Extra safety net: if the vendor file 404s or is blocked, make sure the
-  // homepage still unlocks and shows normally instead of staying hidden.
-  window.addEventListener('load', function () {
-    if (typeof THREE === 'undefined') {
-      document.body.classList.remove('intro-lock');
-      var hero = document.getElementById('cinema-hero');
-      var nav = document.getElementById('site-nav');
-      var content = document.getElementById('cinema-content');
-      var cue = document.getElementById('scroll-cue');
-      var loading = document.getElementById('intro-loading');
-      var skip = document.getElementById('intro-skip');
-      if (hero) { hero.style.height = 'auto'; hero.style.minHeight = '0'; hero.classList.add('static-ready'); }
-      if (loading) loading.style.display = 'none';
-      if (skip) skip.style.display = 'none';
-      if (nav) nav.classList.add('nav-in');
-      if (content) content.classList.add('in');
-      if (cue) cue.classList.add('in');
-    }
-  });
-</script>
-<script src="js/intro3d.js?v=3"></script>
+<script src="js/hero-video.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
