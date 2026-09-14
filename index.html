@@ -29,13 +29,33 @@
     const analytics = getAnalytics(app);
   </script>
 </head>
-<body>
+<body class="home">
 
-<!-- ============ NAV ============ -->
-<nav class="nav">
+<script>
+  // Runs synchronously before paint: prevents any flash of the cinematic
+  // hero for repeat visits in this session, or for reduced-motion users —
+  // the page drops straight into the settled, fully-revealed state.
+  (function () {
+    // ?intro=force (or #intro=force) in the URL always replays the full
+    // animation — bypasses prefers-reduced-motion and the "seen this
+    // session" flag. Handy for testing, since a plain refresh alone does
+    // not clear sessionStorage.
+    var forcePlay = /[?&#]intro=force\b/.test(window.location.href);
+    var reduce = !forcePlay && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var played = false;
+    try { played = !forcePlay && sessionStorage.getItem('dp_intro_played_v3') === '1'; } catch (e) {}
+    if (reduce || played) {
+      document.write('<style>#cinema-hero{height:auto;min-height:0;}#cinema-hero .intro-loading,#cinema-hero #intro-canvas,#cinema-hero .intro-skip{display:none !important;}#cinema-hero.static-ready{padding:150px 0 90px;}</style>');
+      document.documentElement.setAttribute('data-intro', 'skip');
+    }
+  })();
+</script>
+
+<!-- ============ NAV (overlays the cinematic hero, revealed once inside the house) ============ -->
+<nav class="nav nav-overlay" id="site-nav">
   <div class="nav-inner">
     <a href="index.html" class="brand">
-      <img src="images/logo.jpeg" alt="Diamond Paints logo" class="brand-mark">
+      <span class="brand-mark" aria-hidden="true"></span>
       <span class="brand-word">DIAMOND PAINTS<small>Cut for Brilliance</small></span>
     </a>
     <div class="nav-links">
@@ -49,55 +69,39 @@
   </div>
 </nav>
 
-<!-- ============ HERO ============ -->
-<header class="hero on-dark">
-  <div class="wrap">
-    <div class="hero-grid">
-      <div>
-        <span class="eyebrow on-dark">Manufacturers of Paint, Primer &amp; Putty · Est. 2019</span>
-        <h1>Every wall deserves <em>a brilliant cut.</em></h1>
-        <p class="lede">Diamond Paints formulates emulsions, primers, wall putty, POP and decorative finishes the way a jeweller cuts a stone — layer by layer, facet by facet, until the colour catches the light exactly right.</p>
-        <div class="hero-actions">
-          <a href="products.html" class="btn btn-primary">Explore the Range</a>
-          <a href="contact.html#dealer" class="btn btn-ghost">Become a Dealer</a>
-        </div>
-      </div>
-      <div class="hero-visual">
-        <div class="logo-stage">
-          <div class="logo-glow"></div>
-          <div class="logo-ring r1"></div>
-          <div class="logo-ring r2"></div>
-          <span class="spark s1"></span>
-          <span class="spark s2"></span>
-          <span class="spark s3"></span>
-          <span class="spark s4"></span>
-          <span class="spark s5"></span>
-          <div class="logo-coin">
-            <img src="images/logo-mark.png" alt="Diamond Paints" class="coin-logo">
-            <div class="coin-shine"></div>
-          </div>
-          <div class="logo-shadow"></div>
-          <div class="logo-reflection">
-            <img src="images/logo-mark.png" alt="" aria-hidden="true">
-          </div>
-        </div>
-      </div>
-    </div>
+<!-- ============ CINEMATIC VILLA-TO-INTERIOR HERO ============
+     Drone orbit over a luxury villa → descent to the entrance → the
+     door opens → the camera travels inside → the Diamond Paints
+     homepage reveals itself inside the lit interior. -->
+<section id="cinema-hero" class="cinema-hero">
+  <canvas id="intro-canvas"></canvas>
+  <div class="cinema-veil" id="cinema-veil"></div>
 
-    <div class="stat-strip">
-      <div><b data-count="9" data-suffix="">0</b><span>Product Lines</span></div>
-      <div><b data-count="60" data-suffix="+">0</b><span>Shades &amp; Finishes</span></div>
-      <div><b data-count="5" data-suffix="">0</b><span>Sales Depots</span></div>
-      <div><b data-count="100" data-suffix="%">0</b><span>Quality Checked</span></div>
+  <div class="intro-loading" id="intro-loading">
+    <div class="intro-spinner"></div>
+    <span>DIAMOND PAINTS</span>
+  </div>
+
+  <button type="button" id="intro-skip" class="intro-skip">Skip Intro ✕</button>
+
+  <div class="cinema-content" id="cinema-content">
+    <span class="cinema-wordmark">DIAMOND&nbsp;PAINTS</span>
+    <h1>Every wall deserves <em>a brilliant coat.</em></h1>
+    <p>Diamond Paints brings premium emulsions, primers, wall putty, POP and decorative finishes to transform every space beautifully.</p>
+    <div class="cinema-actions">
+      <a href="products.html" class="btn btn-primary">Explore the Range</a>
+      <a href="contact.html#dealer" class="btn btn-ghost">Become a Dealer</a>
     </div>
   </div>
-</header>
+
+  <div class="scroll-cue" id="scroll-cue">Scroll</div>
+</section>
 
 <!-- ============ CATEGORY GRID ============ -->
 <section class="section">
   <div class="wrap">
     <div class="head reveal">
-      <span class="eyebrow">What we manufacture</span>
+      <span class="eyebrow">Featured Products</span>
       <h2>One factory, nine facets of finish.</h2>
       <p>From the first coat of primer to the final sheen of colour emulsion, every product in the Diamond Paints range is engineered to work together — so the wall performs as one system, not a stack of separate purchases.</p>
     </div>
@@ -208,6 +212,13 @@
         <p>Colour cards, site support and margin structures built around the people who sell for us.</p>
       </div>
     </div>
+
+    <div class="stat-strip reveal">
+      <div><b data-count="9" data-suffix="">0</b><span>Product Lines</span></div>
+      <div><b data-count="60" data-suffix="+">0</b><span>Shades &amp; Finishes</span></div>
+      <div><b data-count="5" data-suffix="">0</b><span>Sales Depots</span></div>
+      <div><b data-count="100" data-suffix="%">0</b><span>Quality Checked</span></div>
+    </div>
   </div>
 </section>
 
@@ -230,7 +241,7 @@
     <div class="footer-grid">
       <div>
         <a href="index.html" class="brand" style="margin-bottom:16px;display:flex;">
-          <img src="images/logo.jpeg" alt="Diamond Paints logo" class="brand-mark">
+          <span class="brand-mark" aria-hidden="true"></span>
           <span class="brand-word">DIAMOND PAINTS</span>
         </a>
         <p style="max-width:280px;font-size:13.5px;line-height:1.6;">Manufacturers of interior &amp; exterior emulsions, primers, wall putty, POP and decorative finishes.</p>
@@ -278,6 +289,29 @@
   </div>
 </footer>
 
+<script src="js/vendor/three.min.js?v=3"></script>
+<script>
+  // Extra safety net: if the vendor file 404s or is blocked, make sure the
+  // homepage still unlocks and shows normally instead of staying hidden.
+  window.addEventListener('load', function () {
+    if (typeof THREE === 'undefined') {
+      document.body.classList.remove('intro-lock');
+      var hero = document.getElementById('cinema-hero');
+      var nav = document.getElementById('site-nav');
+      var content = document.getElementById('cinema-content');
+      var cue = document.getElementById('scroll-cue');
+      var loading = document.getElementById('intro-loading');
+      var skip = document.getElementById('intro-skip');
+      if (hero) { hero.style.height = 'auto'; hero.style.minHeight = '0'; hero.classList.add('static-ready'); }
+      if (loading) loading.style.display = 'none';
+      if (skip) skip.style.display = 'none';
+      if (nav) nav.classList.add('nav-in');
+      if (content) content.classList.add('in');
+      if (cue) cue.classList.add('in');
+    }
+  });
+</script>
+<script src="js/intro3d.js?v=3"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
