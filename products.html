@@ -7,6 +7,27 @@
 <meta name="description" content="Browse the full Diamond Paints catalogue: interior & exterior primers, Shine & Apex emulsions, Deluxe colour range, wall putty, POP, distemper and luxe metallics.">
 <link rel="icon" type="image/png" href="images/favicon.png">
 <link rel="stylesheet" href="css/style.css">
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyCwrRdNctx65YdFb_jzEzg0zG59SCruEec",
+      authDomain: "diamond-paints-4dc4c.firebaseapp.com",
+      projectId: "diamond-paints-4dc4c",
+      storageBucket: "diamond-paints-4dc4c.firebasestorage.app",
+      messagingSenderId: "1033486065896",
+      appId: "1:1033486065896:web:2b772708ad2bbb7b9d695d",
+      measurementId: "G-JZHRYMHL9F"
+    };
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
 </head>
 <body>
 
@@ -14,7 +35,7 @@
 <nav class="nav">
   <div class="nav-inner">
     <a href="index.html" class="brand">
-      <img src="images/logo.jpeg" alt="Diamond Paints logo" class="brand-mark">
+      <span class="brand-mark" aria-hidden="true"></span>
       <span class="brand-word">DIAMOND PAINTS<small>Cut for Brilliance</small></span>
     </a>
     <div class="nav-links">
@@ -71,15 +92,215 @@
         <p>A foundational undercoat for walls and ceilings — seals porous drywall or masonry, blocks stains and odours, and gives your topcoat something even to grip.</p>
       </div>
       <div class="line-grid">
-        <div class="line-card has-image"><img class="line-card-img" src="images/brands/3DInteriorPrimer.png" alt="3D Interior Primer" loading="lazy"><h4>3D Interior Primer</h4><span class="packs">1L · 4L · 10L · 20L</span><p>Our fast-drying entry primer, built for high-turnover residential sites.</p></div>
-        <div class="line-card has-image"><img class="line-card-img" src="images/brands/604InteriorPrimer.png" alt="604 Interior Primer" loading="lazy"><h4>604 Interior Primer</h4><span class="packs">1L · 4L · 10L · 20L</span><p>A general-purpose sealer coat for standard plaster and drywall surfaces.</p></div>
-        <div class="line-card has-image"><img class="line-card-img" src="images/brands/ASHAInteriorPrimer.png" alt="ASHA Interior Primer" loading="lazy"><h4>ASHA Interior Primer</h4><span class="packs">1L · 4L · 10L · 20L</span><p>Our best-selling depot line — reliable coverage at a contractor-friendly price.</p></div>
-        <div class="line-card has-image"><img class="line-card-img" src="images/brands/ClassicInteriorPrimer.png" alt="Classic Interior Primer" loading="lazy"><h4>Classic Interior Primer</h4><span class="packs">1L · 4L · 10L · 20L</span><p>A dependable everyday sealer for repaint and touch-up work.</p></div>
-        <div class="line-card has-image"><img class="line-card-img" src="images/brands/DeluxInteriorPrimer.png" alt="Delux Interior Primer" loading="lazy"><h4>Delux Interior Primer</h4><span class="packs">1L · 4L · 10L · 20L</span><p>Higher solids content for better hide over patched and repaired walls.</p></div>
-        <div class="line-card has-image"><img class="line-card-img" src="images/brands/DiamondInteriorPrimer.png" alt="Diamond Interior Primer" loading="lazy"><h4>Diamond Interior Primer</h4><span class="packs">1L · 4L · 10L · 20L</span><p>Our flagship interior primer, paired with the Diamond emulsion system.</p></div>
-        <div class="line-card has-image"><img class="line-card-img" src="images/brands/ExcellentInteriorPrimer.png" alt="Excellent Interior Primer" loading="lazy"><h4>Excellent Interior Primer</h4><span class="packs">1L · 4L · 10L · 20L</span><p>Premium-grade sealer specified for villa and showroom interiors.</p></div>
-        <div class="line-card has-image"><img class="line-card-img" src="images/brands/ALLWallPrimer.png" alt="ALL &amp; Wall Primer" loading="lazy"><h4>ALL &amp; Wall Primer</h4><span class="packs">1L · 4L · 10L · 20L</span><p>A do-it-all undercoat for mixed masonry and drywall interiors.</p></div>
+        <button type="button" class="line-card has-image brand-open" onclick="openShadeDialog('dlg-3dinterior')"><img class="line-card-img" src="images/brands/3DInteriorPrimer.png" alt="3D Interior Primer" loading="lazy"><h4>3D Interior Primer</h4><span class="packs">1L · 4L · 10L · 20L</span><p>Our fast-drying entry primer, built for high-turnover residential sites.</p><span class="go">View product →</span></button>
+        <button type="button" class="line-card has-image brand-open" onclick="openShadeDialog('dlg-604interior')"><img class="line-card-img" src="images/brands/604InteriorPrimer.png" alt="604 Interior Primer" loading="lazy"><h4>604 Interior Primer</h4><span class="packs">1L · 4L · 10L · 20L</span><p>A general-purpose sealer coat for standard plaster and drywall surfaces.</p><span class="go">View product →</span></button>
+        <button type="button" class="line-card has-image brand-open" onclick="openShadeDialog('dlg-ashainterior')"><img class="line-card-img" src="images/brands/ASHAInteriorPrimer.png" alt="ASHA Interior Primer" loading="lazy"><h4>ASHA Interior Primer</h4><span class="packs">1L · 4L · 10L · 20L</span><p>Our best-selling depot line — reliable coverage at a contractor-friendly price.</p><span class="go">View product →</span></button>
+        <button type="button" class="line-card has-image brand-open" onclick="openShadeDialog('dlg-classicinterior')"><img class="line-card-img" src="images/brands/ClassicInteriorPrimer.png" alt="Classic Interior Primer" loading="lazy"><h4>Classic Interior Primer</h4><span class="packs">1L · 4L · 10L · 20L</span><p>A dependable everyday sealer for repaint and touch-up work.</p><span class="go">View product →</span></button>
+        <button type="button" class="line-card has-image brand-open" onclick="openShadeDialog('dlg-deluxinterior')"><img class="line-card-img" src="images/brands/DeluxInteriorPrimer.png" alt="Delux Interior Primer" loading="lazy"><h4>Delux Interior Primer</h4><span class="packs">1L · 4L · 10L · 20L</span><p>Higher solids content for better hide over patched and repaired walls.</p><span class="go">View product →</span></button>
+        <button type="button" class="line-card has-image brand-open" onclick="openShadeDialog('dlg-diamondinterior')"><img class="line-card-img" src="images/brands/DiamondInteriorPrimer.png" alt="Diamond Interior Primer" loading="lazy"><h4>Diamond Interior Primer</h4><span class="packs">1L · 4L · 10L · 20L</span><p>Our flagship interior primer, paired with the Diamond emulsion system.</p><span class="go">View product →</span></button>
+        <button type="button" class="line-card has-image brand-open" onclick="openShadeDialog('dlg-excellentinterior')"><img class="line-card-img" src="images/brands/ExcellentInteriorPrimer.png" alt="Excellent Interior Primer" loading="lazy"><h4>Excellent Interior Primer</h4><span class="packs">1L · 4L · 10L · 20L</span><p>Premium-grade sealer specified for villa and showroom interiors.</p><span class="go">View product →</span></button>
+        <button type="button" class="line-card has-image brand-open" onclick="openShadeDialog('dlg-allwallinterior')"><img class="line-card-img" src="images/brands/ALLWallPrimer.png" alt="ALL &amp; Wall Primer" loading="lazy"><h4>ALL &amp; Wall Primer</h4><span class="packs">1L · 4L · 10L · 20L</span><p>A do-it-all undercoat for mixed masonry and drywall interiors.</p><span class="go">View product →</span></button>
       </div>
+
+      <dialog class="shade-dialog" id="dlg-3dinterior">
+        <div class="shade-dialog-inner">
+          <div class="shade-dialog-hero">
+            <img class="shade-dialog-photo" src="images/brands/photos/3DInteriorPrimerPhoto.jpg" alt="3D Interior Primer bucket">
+            <div class="shade-dialog-topbar">
+              <button type="button" class="shade-dialog-back" onclick="closeShadeDialog('dlg-3dinterior')">← Back to range</button>
+              <button type="button" class="shade-dialog-close" onclick="closeShadeDialog('dlg-3dinterior')" aria-label="Close">✕</button>
+            </div>
+          </div>
+          <div class="shade-dialog-scroll">
+            <div class="shade-dialog-body spec-dialog-body">
+              <span class="tag">Undercoat · Interior</span>
+              <h3>3D Interior Primer</h3>
+              <p class="spec-desc">Our fast-drying entry primer, built for high-turnover residential sites.</p>
+              <div class="spec-facts">
+                <div class="spec-fact"><strong>Pack sizes</strong><span>1L · 4L · 10L · 20L</span></div>
+                <div class="spec-fact"><strong>Base</strong><span>Emulsion-based acrylic</span></div>
+                <div class="spec-fact"><strong>Coverage</strong><span>Interior walls &amp; ceilings</span></div>
+                <div class="spec-fact"><strong>Best for</strong><span>Fast-turnover residential sites</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </dialog>
+
+      <dialog class="shade-dialog" id="dlg-604interior">
+        <div class="shade-dialog-inner">
+          <div class="shade-dialog-hero">
+            <img class="shade-dialog-photo" src="images/brands/photos/RelaxoPrimerPhoto.jpg" alt="604 Interior Primer bucket">
+            <div class="shade-dialog-topbar">
+              <button type="button" class="shade-dialog-back" onclick="closeShadeDialog('dlg-604interior')">← Back to range</button>
+              <button type="button" class="shade-dialog-close" onclick="closeShadeDialog('dlg-604interior')" aria-label="Close">✕</button>
+            </div>
+          </div>
+          <div class="shade-dialog-scroll">
+            <div class="shade-dialog-body spec-dialog-body">
+              <span class="tag">Undercoat · Interior</span>
+              <h3>604 Interior Primer</h3>
+              <p class="spec-desc">A general-purpose sealer coat for standard plaster and drywall surfaces.</p>
+              <div class="spec-facts">
+                <div class="spec-fact"><strong>Pack sizes</strong><span>1L · 4L · 10L · 20L</span></div>
+                <div class="spec-fact"><strong>Base</strong><span>Water-thinnable primer</span></div>
+                <div class="spec-fact"><strong>Coverage</strong><span>Interior &amp; exterior surfaces</span></div>
+                <div class="spec-fact"><strong>Best for</strong><span>Standard plaster &amp; drywall sealing</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </dialog>
+
+      <dialog class="shade-dialog" id="dlg-ashainterior">
+        <div class="shade-dialog-inner">
+          <div class="shade-dialog-hero">
+            <img class="shade-dialog-photo" src="images/brands/photos/ASHAInteriorPrimerPhoto.jpg" alt="ASHA Interior Primer bucket">
+            <div class="shade-dialog-topbar">
+              <button type="button" class="shade-dialog-back" onclick="closeShadeDialog('dlg-ashainterior')">← Back to range</button>
+              <button type="button" class="shade-dialog-close" onclick="closeShadeDialog('dlg-ashainterior')" aria-label="Close">✕</button>
+            </div>
+          </div>
+          <div class="shade-dialog-scroll">
+            <div class="shade-dialog-body spec-dialog-body">
+              <span class="tag">Undercoat · Interior</span>
+              <h3>ASHA Interior Primer</h3>
+              <p class="spec-desc">Our best-selling depot line — reliable coverage at a contractor-friendly price.</p>
+              <div class="spec-facts">
+                <div class="spec-fact"><strong>Pack sizes</strong><span>1L · 4L · 10L · 20L</span></div>
+                <div class="spec-fact"><strong>Base</strong><span>Acrylic wall primer</span></div>
+                <div class="spec-fact"><strong>Coverage</strong><span>Interior walls</span></div>
+                <div class="spec-fact"><strong>Best for</strong><span>Contractor-grade depot stock</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </dialog>
+
+      <dialog class="shade-dialog" id="dlg-classicinterior">
+        <div class="shade-dialog-inner">
+          <div class="shade-dialog-hero">
+            <img class="shade-dialog-photo" src="images/brands/photos/ClassicExteriorPrimerPhoto.jpg" alt="Classic Interior Primer bucket">
+            <div class="shade-dialog-topbar">
+              <button type="button" class="shade-dialog-back" onclick="closeShadeDialog('dlg-classicinterior')">← Back to range</button>
+              <button type="button" class="shade-dialog-close" onclick="closeShadeDialog('dlg-classicinterior')" aria-label="Close">✕</button>
+            </div>
+          </div>
+          <div class="shade-dialog-scroll">
+            <div class="shade-dialog-body spec-dialog-body">
+              <span class="tag">Undercoat · Interior</span>
+              <h3>Classic Interior Primer</h3>
+              <p class="spec-desc">A dependable everyday sealer for repaint and touch-up work, from the Classic Paints range.</p>
+              <div class="spec-facts">
+                <div class="spec-fact"><strong>Pack sizes</strong><span>1L · 4L · 10L · 20L</span></div>
+                <div class="spec-fact"><strong>Base</strong><span>Water-based primer</span></div>
+                <div class="spec-fact"><strong>Coverage</strong><span>Interior walls</span></div>
+                <div class="spec-fact"><strong>Best for</strong><span>Repaint &amp; touch-up work</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </dialog>
+
+      <dialog class="shade-dialog" id="dlg-deluxinterior">
+        <div class="shade-dialog-inner">
+          <div class="shade-dialog-hero">
+            <img class="shade-dialog-photo" src="images/brands/photos/DeluxExteriorPrimerPhoto.jpg" alt="Delux Interior Primer bucket">
+            <div class="shade-dialog-topbar">
+              <button type="button" class="shade-dialog-back" onclick="closeShadeDialog('dlg-deluxinterior')">← Back to range</button>
+              <button type="button" class="shade-dialog-close" onclick="closeShadeDialog('dlg-deluxinterior')" aria-label="Close">✕</button>
+            </div>
+          </div>
+          <div class="shade-dialog-scroll">
+            <div class="shade-dialog-body spec-dialog-body">
+              <span class="tag">Undercoat · Interior</span>
+              <h3>Delux Interior Primer</h3>
+              <p class="spec-desc">Higher solids content for better hide over patched and repaired walls.</p>
+              <div class="spec-facts">
+                <div class="spec-fact"><strong>Pack sizes</strong><span>1L · 4L · 10L · 20L</span></div>
+                <div class="spec-fact"><strong>Base</strong><span>High-solids acrylic</span></div>
+                <div class="spec-fact"><strong>Coverage</strong><span>Interior walls</span></div>
+                <div class="spec-fact"><strong>Best for</strong><span>Patched &amp; repaired wall surfaces</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </dialog>
+
+      <dialog class="shade-dialog" id="dlg-diamondinterior">
+        <div class="shade-dialog-inner">
+          <div class="shade-dialog-hero">
+            <img class="shade-dialog-photo" src="images/brands/photos/DiamondInteriorPrimerPhoto.jpg" alt="Diamond Interior Primer bucket">
+            <div class="shade-dialog-topbar">
+              <button type="button" class="shade-dialog-back" onclick="closeShadeDialog('dlg-diamondinterior')">← Back to range</button>
+              <button type="button" class="shade-dialog-close" onclick="closeShadeDialog('dlg-diamondinterior')" aria-label="Close">✕</button>
+            </div>
+          </div>
+          <div class="shade-dialog-scroll">
+            <div class="shade-dialog-body spec-dialog-body">
+              <span class="tag">Undercoat · Interior</span>
+              <h3>Diamond Interior Primer</h3>
+              <p class="spec-desc">Our flagship interior primer, paired with the Diamond emulsion system.</p>
+              <div class="spec-facts">
+                <div class="spec-fact"><strong>Pack sizes</strong><span>1L · 4L · 10L · 20L</span></div>
+                <div class="spec-fact"><strong>Base</strong><span>Water-thinnable acrylic</span></div>
+                <div class="spec-fact"><strong>Coverage</strong><span>Interior walls</span></div>
+                <div class="spec-fact"><strong>Best for</strong><span>Use under the Diamond emulsion system</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </dialog>
+
+      <dialog class="shade-dialog" id="dlg-excellentinterior">
+        <div class="shade-dialog-inner">
+          <div class="shade-dialog-hero">
+            <img class="shade-dialog-photo" src="images/brands/photos/ExcellentInteriorPrimerPhoto.jpg" alt="Excellent Interior Primer bucket">
+            <div class="shade-dialog-topbar">
+              <button type="button" class="shade-dialog-back" onclick="closeShadeDialog('dlg-excellentinterior')">← Back to range</button>
+              <button type="button" class="shade-dialog-close" onclick="closeShadeDialog('dlg-excellentinterior')" aria-label="Close">✕</button>
+            </div>
+          </div>
+          <div class="shade-dialog-scroll">
+            <div class="shade-dialog-body spec-dialog-body">
+              <span class="tag">Undercoat · Interior · Premium</span>
+              <h3>Excellent Interior Primer</h3>
+              <p class="spec-desc">Premium-grade sealer specified for villa and showroom interiors.</p>
+              <div class="spec-facts">
+                <div class="spec-fact"><strong>Pack sizes</strong><span>1L · 4L · 10L · 20L</span></div>
+                <div class="spec-fact"><strong>Base</strong><span>Cement primer, water thinnable</span></div>
+                <div class="spec-fact"><strong>Coverage</strong><span>Interior walls</span></div>
+                <div class="spec-fact"><strong>Best for</strong><span>Villa &amp; showroom-grade interiors</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </dialog>
+
+      <dialog class="shade-dialog" id="dlg-allwallinterior">
+        <div class="shade-dialog-inner">
+          <div class="shade-dialog-hero">
+            <img class="shade-dialog-photo" src="images/brands/photos/SupremeWallmartExteriorPhoto.jpg" alt="ALL &amp; Wall Primer bucket">
+            <div class="shade-dialog-topbar">
+              <button type="button" class="shade-dialog-back" onclick="closeShadeDialog('dlg-allwallinterior')">← Back to range</button>
+              <button type="button" class="shade-dialog-close" onclick="closeShadeDialog('dlg-allwallinterior')" aria-label="Close">✕</button>
+            </div>
+          </div>
+          <div class="shade-dialog-scroll">
+            <div class="shade-dialog-body spec-dialog-body">
+              <span class="tag">Undercoat · Interior</span>
+              <h3>ALL &amp; Wall Primer</h3>
+              <p class="spec-desc">A do-it-all undercoat for mixed masonry and drywall interiors.</p>
+              <div class="spec-facts">
+                <div class="spec-fact"><strong>Pack sizes</strong><span>1L · 4L · 10L · 20L</span></div>
+                <div class="spec-fact"><strong>Base</strong><span>Cement primer, water thinnable</span></div>
+                <div class="spec-fact"><strong>Coverage</strong><span>Mixed masonry &amp; drywall</span></div>
+                <div class="spec-fact"><strong>Best for</strong><span>Sites with mixed interior substrates</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </dialog>
     </div>
 
     <!-- EXTERIOR PRIMER -->
@@ -93,16 +314,241 @@
         <p>An alkali- and weather-resistant undercoat that seals exterior masonry, blocks efflorescence, and anchors the topcoat against monsoon and UV cycling.</p>
       </div>
       <div class="line-grid">
-        <div class="line-card has-image"><img class="line-card-img" src="images/brands/ALLWallExteriorPrimer.png" alt="ALL &amp; Wall Exterior Primer" loading="lazy"><h4>ALL &amp; Wall Exterior Primer</h4><span class="packs">1L · 4L · 10L · 20L</span><p>All-surface exterior sealer for plaster, brick and block work.</p></div>
-        <div class="line-card has-image"><img class="line-card-img" src="images/brands/ASHAExteriorPrimer.png" alt="ASHA Exterior Primer" loading="lazy"><h4>ASHA Exterior Primer</h4><span class="packs">1L · 4L · 10L · 20L</span><p>Our value exterior sealer, depot-stocked in high volume.</p></div>
-        <div class="line-card has-image"><img class="line-card-img" src="images/brands/ClassicExteriorPrimer.png" alt="Classic Exterior Primer" loading="lazy"><h4>Classic Exterior Primer</h4><span class="packs">1L · 4L · 10L · 20L</span><p>Standard-duty undercoat for repaint jobs on existing facades.</p></div>
-        <div class="line-card has-image"><img class="line-card-img" src="images/brands/DeluxExteriorPrimer.png" alt="Delux Exterior Primer" loading="lazy"><h4>Delux Exterior Primer</h4><span class="packs">1L · 4L · 10L · 20L</span><p>Extra hide for patched render and mixed-age masonry.</p></div>
-        <div class="line-card has-image"><img class="line-card-img" src="images/brands/DOCOExteriorPrimer.png" alt="DOCO Exterior Primer" loading="lazy"><h4>DOCO Exterior Primer</h4><span class="packs">1L · 4L · 10L · 20L</span><p>Damp-resistant formulation for sites with rising or seasonal moisture.</p></div>
-        <div class="line-card has-image"><img class="line-card-img" src="images/brands/DPHExteriorPrimer.png" alt="DPH Exterior Primer" loading="lazy"><h4>DPH Exterior Primer</h4><span class="packs">10L · 20L</span><p>High-build primer for rough-cast and textured exterior surfaces.</p></div>
-        <div class="line-card has-image"><img class="line-card-img" src="images/brands/ExcellentExteriorPrimer.png" alt="Excellent Exterior Primer" loading="lazy"><h4>Excellent Exterior Primer</h4><span class="packs">1L · 4L · 10L · 20L</span><p>Premium exterior sealer for facades that need a longer repaint cycle.</p></div>
-        <div class="line-card has-image"><img class="line-card-img" src="images/brands/ProtectGreenPink.png" alt="Protect (Green &amp; Pink)" loading="lazy"><h4>Protect (Green &amp; Pink)</h4><span class="packs">1L · 4L · 10L · 20L</span><p>Our fungal- and algae-resistant primer, tinted so applicators can track coverage.</p></div>
-        <div class="line-card has-image"><img class="line-card-img" src="images/brands/ShabeenaExteriorPrimer.png" alt="Shabeena Exterior Primer" loading="lazy"><h4>Shabeena Exterior Primer</h4><span class="packs">10L · 20L</span><p>A budget exterior sealer for large-area residential exteriors.</p></div>
+        <button type="button" class="line-card has-image brand-open" onclick="openShadeDialog('dlg-allwallexterior')"><img class="line-card-img" src="images/brands/ALLWallExteriorPrimer.png" alt="ALL &amp; Wall Exterior Primer" loading="lazy"><h4>ALL &amp; Wall Exterior Primer</h4><span class="packs">1L · 4L · 10L · 20L</span><p>All-surface exterior sealer for plaster, brick and block work.</p><span class="go">View product →</span></button>
+        <button type="button" class="line-card has-image brand-open" onclick="openShadeDialog('dlg-ashaexterior')"><img class="line-card-img" src="images/brands/ASHAExteriorPrimer.png" alt="ASHA Exterior Primer" loading="lazy"><h4>ASHA Exterior Primer</h4><span class="packs">1L · 4L · 10L · 20L</span><p>Our value exterior sealer, depot-stocked in high volume.</p><span class="go">View product →</span></button>
+        <button type="button" class="line-card has-image brand-open" onclick="openShadeDialog('dlg-classicexterior')"><img class="line-card-img" src="images/brands/ClassicExteriorPrimer.png" alt="Classic Exterior Primer" loading="lazy"><h4>Classic Exterior Primer</h4><span class="packs">1L · 4L · 10L · 20L</span><p>Standard-duty undercoat for repaint jobs on existing facades.</p><span class="go">View product →</span></button>
+        <button type="button" class="line-card has-image brand-open" onclick="openShadeDialog('dlg-deluxexterior')"><img class="line-card-img" src="images/brands/DeluxExteriorPrimer.png" alt="Delux Exterior Primer" loading="lazy"><h4>Delux Exterior Primer</h4><span class="packs">1L · 4L · 10L · 20L</span><p>Extra hide for patched render and mixed-age masonry.</p><span class="go">View product →</span></button>
+        <button type="button" class="line-card has-image brand-open" onclick="openShadeDialog('dlg-docoexterior')"><img class="line-card-img" src="images/brands/DOCOExteriorPrimer.png" alt="DOCO Exterior Primer" loading="lazy"><h4>DOCO Exterior Primer</h4><span class="packs">1L · 4L · 10L · 20L</span><p>Damp-resistant formulation for sites with rising or seasonal moisture.</p><span class="go">View product →</span></button>
+        <button type="button" class="line-card has-image brand-open" onclick="openShadeDialog('dlg-dphexterior')"><img class="line-card-img" src="images/brands/DPHExteriorPrimer.png" alt="DPH Exterior Primer" loading="lazy"><h4>DPH Exterior Primer</h4><span class="packs">10L · 20L</span><p>High-build primer for rough-cast and textured exterior surfaces.</p><span class="go">View product →</span></button>
+        <button type="button" class="line-card has-image brand-open" onclick="openShadeDialog('dlg-excellentexterior')"><img class="line-card-img" src="images/brands/ExcellentExteriorPrimer.png" alt="Excellent Exterior Primer" loading="lazy"><h4>Excellent Exterior Primer</h4><span class="packs">1L · 4L · 10L · 20L</span><p>Premium exterior sealer for facades that need a longer repaint cycle.</p><span class="go">View product →</span></button>
+        <button type="button" class="line-card has-image brand-open" onclick="openShadeDialog('dlg-protectgreenpink')"><img class="line-card-img" src="images/brands/ProtectGreenPink.png" alt="Protect (Green &amp; Pink)" loading="lazy"><h4>Protect (Green &amp; Pink)</h4><span class="packs">1L · 4L · 10L · 20L</span><p>Our fungal- and algae-resistant primer, tinted so applicators can track coverage.</p><span class="go">View product →</span></button>
+        <button type="button" class="line-card has-image brand-open" onclick="openShadeDialog('dlg-shabeenaexterior')"><img class="line-card-img" src="images/brands/ShabeenaExteriorPrimer.png" alt="Shabeena Exterior Primer" loading="lazy"><h4>Shabeena Exterior Primer</h4><span class="packs">10L · 20L</span><p>A budget exterior sealer for large-area residential exteriors.</p><span class="go">View product →</span></button>
       </div>
+
+      <dialog class="shade-dialog" id="dlg-allwallexterior">
+        <div class="shade-dialog-inner">
+          <div class="shade-dialog-hero">
+            <img class="shade-dialog-photo" src="images/brands/photos/SupremeWallmartExteriorPhoto.jpg" alt="ALL &amp; Wall Exterior Primer bucket">
+            <div class="shade-dialog-topbar">
+              <button type="button" class="shade-dialog-back" onclick="closeShadeDialog('dlg-allwallexterior')">← Back to range</button>
+              <button type="button" class="shade-dialog-close" onclick="closeShadeDialog('dlg-allwallexterior')" aria-label="Close">✕</button>
+            </div>
+          </div>
+          <div class="shade-dialog-scroll">
+            <div class="shade-dialog-body spec-dialog-body">
+              <span class="tag">Undercoat · Exterior</span>
+              <h3>ALL &amp; Wall Exterior Primer</h3>
+              <p class="spec-desc">All-surface exterior sealer for plaster, brick and block work.</p>
+              <div class="spec-facts">
+                <div class="spec-fact"><strong>Pack sizes</strong><span>1L · 4L · 10L · 20L</span></div>
+                <div class="spec-fact"><strong>Base</strong><span>Cement primer, water thinnable</span></div>
+                <div class="spec-fact"><strong>Coverage</strong><span>Plaster, brick &amp; block work</span></div>
+                <div class="spec-fact"><strong>Best for</strong><span>Mixed exterior masonry substrates</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </dialog>
+
+      <dialog class="shade-dialog" id="dlg-ashaexterior">
+        <div class="shade-dialog-inner">
+          <div class="shade-dialog-hero">
+            <img class="shade-dialog-photo" src="images/brands/photos/ASHAExteriorPrimerPhoto.jpg" alt="ASHA Exterior Primer bucket">
+            <div class="shade-dialog-topbar">
+              <button type="button" class="shade-dialog-back" onclick="closeShadeDialog('dlg-ashaexterior')">← Back to range</button>
+              <button type="button" class="shade-dialog-close" onclick="closeShadeDialog('dlg-ashaexterior')" aria-label="Close">✕</button>
+            </div>
+          </div>
+          <div class="shade-dialog-scroll">
+            <div class="shade-dialog-body spec-dialog-body">
+              <span class="tag">Undercoat · Exterior</span>
+              <h3>ASHA Exterior Primer</h3>
+              <p class="spec-desc">Our value exterior sealer, depot-stocked in high volume.</p>
+              <div class="spec-facts">
+                <div class="spec-fact"><strong>Pack sizes</strong><span>1L · 4L · 10L · 20L</span></div>
+                <div class="spec-fact"><strong>Base</strong><span>Acrylic wall primer</span></div>
+                <div class="spec-fact"><strong>Coverage</strong><span>Exterior walls</span></div>
+                <div class="spec-fact"><strong>Best for</strong><span>High-volume depot stock</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </dialog>
+
+      <dialog class="shade-dialog" id="dlg-classicexterior">
+        <div class="shade-dialog-inner">
+          <div class="shade-dialog-hero">
+            <img class="shade-dialog-photo" src="images/brands/photos/ClassicExteriorPrimerPhoto.jpg" alt="Classic Exterior Primer bucket">
+            <div class="shade-dialog-topbar">
+              <button type="button" class="shade-dialog-back" onclick="closeShadeDialog('dlg-classicexterior')">← Back to range</button>
+              <button type="button" class="shade-dialog-close" onclick="closeShadeDialog('dlg-classicexterior')" aria-label="Close">✕</button>
+            </div>
+          </div>
+          <div class="shade-dialog-scroll">
+            <div class="shade-dialog-body spec-dialog-body">
+              <span class="tag">Undercoat · Exterior</span>
+              <h3>Classic Exterior Primer</h3>
+              <p class="spec-desc">Standard-duty undercoat for repaint jobs on existing facades — the Classic Paints "Sunflower" hi-formulated exterior primer.</p>
+              <div class="spec-facts">
+                <div class="spec-fact"><strong>Pack sizes</strong><span>1L · 4L · 10L · 20L</span></div>
+                <div class="spec-fact"><strong>Base</strong><span>Hi-formulated acrylic</span></div>
+                <div class="spec-fact"><strong>Coverage</strong><span>Exterior facades</span></div>
+                <div class="spec-fact"><strong>Best for</strong><span>Repaint jobs on existing facades</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </dialog>
+
+      <dialog class="shade-dialog" id="dlg-deluxexterior">
+        <div class="shade-dialog-inner">
+          <div class="shade-dialog-hero">
+            <img class="shade-dialog-photo" src="images/brands/photos/DeluxExteriorPrimerPhoto.jpg" alt="Delux Exterior Primer bucket">
+            <div class="shade-dialog-topbar">
+              <button type="button" class="shade-dialog-back" onclick="closeShadeDialog('dlg-deluxexterior')">← Back to range</button>
+              <button type="button" class="shade-dialog-close" onclick="closeShadeDialog('dlg-deluxexterior')" aria-label="Close">✕</button>
+            </div>
+          </div>
+          <div class="shade-dialog-scroll">
+            <div class="shade-dialog-body spec-dialog-body">
+              <span class="tag">Undercoat · Exterior</span>
+              <h3>Delux Exterior Primer</h3>
+              <p class="spec-desc">Extra hide for patched render and mixed-age masonry.</p>
+              <div class="spec-facts">
+                <div class="spec-fact"><strong>Pack sizes</strong><span>1L · 4L · 10L · 20L</span></div>
+                <div class="spec-fact"><strong>Base</strong><span>High-solids acrylic</span></div>
+                <div class="spec-fact"><strong>Coverage</strong><span>Exterior walls</span></div>
+                <div class="spec-fact"><strong>Best for</strong><span>Patched render &amp; mixed-age masonry</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </dialog>
+
+      <dialog class="shade-dialog" id="dlg-docoexterior">
+        <div class="shade-dialog-inner">
+          <div class="shade-dialog-hero">
+            <img class="shade-dialog-photo" src="images/brands/photos/DOCOExteriorPrimerPhoto.jpg" alt="DOCO Exterior Primer bucket">
+            <div class="shade-dialog-topbar">
+              <button type="button" class="shade-dialog-back" onclick="closeShadeDialog('dlg-docoexterior')">← Back to range</button>
+              <button type="button" class="shade-dialog-close" onclick="closeShadeDialog('dlg-docoexterior')" aria-label="Close">✕</button>
+            </div>
+          </div>
+          <div class="shade-dialog-scroll">
+            <div class="shade-dialog-body spec-dialog-body">
+              <span class="tag">Undercoat · Exterior</span>
+              <h3>DOCO Exterior Primer</h3>
+              <p class="spec-desc">Damp-resistant formulation for sites with rising or seasonal moisture, from the New Excellent Paints DOCO line.</p>
+              <div class="spec-facts">
+                <div class="spec-fact"><strong>Pack sizes</strong><span>1L · 4L · 10L · 20L</span></div>
+                <div class="spec-fact"><strong>Base</strong><span>Damp-resistant primer</span></div>
+                <div class="spec-fact"><strong>Coverage</strong><span>Exterior walls</span></div>
+                <div class="spec-fact"><strong>Best for</strong><span>Rising or seasonal moisture sites</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </dialog>
+
+      <dialog class="shade-dialog" id="dlg-dphexterior">
+        <div class="shade-dialog-inner">
+          <div class="shade-dialog-hero">
+            <img class="shade-dialog-photo" src="images/brands/photos/DPHExteriorPrimerPhoto.jpg" alt="DPH Exterior Primer bucket">
+            <div class="shade-dialog-topbar">
+              <button type="button" class="shade-dialog-back" onclick="closeShadeDialog('dlg-dphexterior')">← Back to range</button>
+              <button type="button" class="shade-dialog-close" onclick="closeShadeDialog('dlg-dphexterior')" aria-label="Close">✕</button>
+            </div>
+          </div>
+          <div class="shade-dialog-scroll">
+            <div class="shade-dialog-body spec-dialog-body">
+              <span class="tag">Undercoat · Exterior</span>
+              <h3>DPH Exterior Primer</h3>
+              <p class="spec-desc">High-build primer for rough-cast and textured exterior surfaces — the DPH Paints "Luxury 3D Finishing" exterior primer.</p>
+              <div class="spec-facts">
+                <div class="spec-fact"><strong>Pack sizes</strong><span>10L · 20L</span></div>
+                <div class="spec-fact"><strong>Base</strong><span>High-build acrylic</span></div>
+                <div class="spec-fact"><strong>Coverage</strong><span>Rough-cast &amp; textured exteriors</span></div>
+                <div class="spec-fact"><strong>Best for</strong><span>Textured facade systems</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </dialog>
+
+      <dialog class="shade-dialog" id="dlg-excellentexterior">
+        <div class="shade-dialog-inner">
+          <div class="shade-dialog-hero">
+            <img class="shade-dialog-photo" src="images/brands/photos/ExcellentExteriorPrimerPhoto.jpg" alt="Excellent Exterior Primer bucket">
+            <div class="shade-dialog-topbar">
+              <button type="button" class="shade-dialog-back" onclick="closeShadeDialog('dlg-excellentexterior')">← Back to range</button>
+              <button type="button" class="shade-dialog-close" onclick="closeShadeDialog('dlg-excellentexterior')" aria-label="Close">✕</button>
+            </div>
+          </div>
+          <div class="shade-dialog-scroll">
+            <div class="shade-dialog-body spec-dialog-body">
+              <span class="tag">Undercoat · Exterior · Premium</span>
+              <h3>Excellent Exterior Primer</h3>
+              <p class="spec-desc">Premium exterior sealer for facades that need a longer repaint cycle.</p>
+              <div class="spec-facts">
+                <div class="spec-fact"><strong>Pack sizes</strong><span>1L · 4L · 10L · 20L</span></div>
+                <div class="spec-fact"><strong>Base</strong><span>Water-thinnable acrylic</span></div>
+                <div class="spec-fact"><strong>Coverage</strong><span>Exterior facades</span></div>
+                <div class="spec-fact"><strong>Best for</strong><span>Strong adhesion, longer repaint cycles</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </dialog>
+
+      <dialog class="shade-dialog" id="dlg-protectgreenpink">
+        <div class="shade-dialog-inner">
+          <div class="shade-dialog-hero">
+            <img class="shade-dialog-photo" src="images/brands/photos/DiamondExtraProtectPhoto.jpg" alt="Protect (Green &amp; Pink) bucket">
+            <div class="shade-dialog-topbar">
+              <button type="button" class="shade-dialog-back" onclick="closeShadeDialog('dlg-protectgreenpink')">← Back to range</button>
+              <button type="button" class="shade-dialog-close" onclick="closeShadeDialog('dlg-protectgreenpink')" aria-label="Close">✕</button>
+            </div>
+          </div>
+          <div class="shade-dialog-scroll">
+            <div class="shade-dialog-body spec-dialog-body">
+              <span class="tag">Undercoat · Exterior</span>
+              <h3>Protect (Green &amp; Pink)</h3>
+              <p class="spec-desc">Our fungal- and algae-resistant primer, tinted so applicators can track coverage — the Diamond Colour "Extra Protect" interior/exterior acrylic primer.</p>
+              <div class="spec-facts">
+                <div class="spec-fact"><strong>Pack sizes</strong><span>1L · 4L · 10L · 20L</span></div>
+                <div class="spec-fact"><strong>Base</strong><span>Acrylic primer</span></div>
+                <div class="spec-fact"><strong>Coverage</strong><span>Interior &amp; exterior walls</span></div>
+                <div class="spec-fact"><strong>Best for</strong><span>Fungal &amp; algae-prone surfaces</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </dialog>
+
+      <dialog class="shade-dialog" id="dlg-shabeenaexterior">
+        <div class="shade-dialog-inner">
+          <div class="shade-dialog-hero">
+            <img class="shade-dialog-photo" src="images/brands/photos/RelaxoPrimerPhoto.jpg" alt="Shabeena Exterior Primer bucket">
+            <div class="shade-dialog-topbar">
+              <button type="button" class="shade-dialog-back" onclick="closeShadeDialog('dlg-shabeenaexterior')">← Back to range</button>
+              <button type="button" class="shade-dialog-close" onclick="closeShadeDialog('dlg-shabeenaexterior')" aria-label="Close">✕</button>
+            </div>
+          </div>
+          <div class="shade-dialog-scroll">
+            <div class="shade-dialog-body spec-dialog-body">
+              <span class="tag">Undercoat · Exterior · Value</span>
+              <h3>Shabeena Exterior Primer</h3>
+              <p class="spec-desc">A budget exterior sealer for large-area residential exteriors.</p>
+              <div class="spec-facts">
+                <div class="spec-fact"><strong>Pack sizes</strong><span>10L · 20L</span></div>
+                <div class="spec-fact"><strong>Base</strong><span>Water-thinnable primer</span></div>
+                <div class="spec-fact"><strong>Coverage</strong><span>Large-area exteriors</span></div>
+                <div class="spec-fact"><strong>Best for</strong><span>Budget residential exterior jobs</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </dialog>
     </div>
 
     <!-- EMULSIONS SHINE -->
@@ -116,10 +562,59 @@
         <p>A washable, low-odour acrylic emulsion with a soft, even sheen. Sold as white plus three deep tint bases so any shade on the card can be mixed to full strength.</p>
       </div>
       <div class="line-grid">
-        <div class="line-card has-image"><img class="line-card-img" src="images/brands/DShine.png" alt="D-Shine" loading="lazy"><h4>D-Shine</h4><span class="packs">1L · 4L · 10L · 20L · White + Dark Base 10/17/22</span><p>Our entry Shine-family emulsion — smooth lay-off, easy touch-up.</p></div>
-        <div class="line-card has-image"><img class="line-card-img" src="images/brands/DeluxShine.png" alt="Delux Shine" loading="lazy"><h4>Delux Shine</h4><span class="packs">1L · 4L · 10L · 20L · White + Dark Base 10/17/22</span><p>A step up in film build for better hide over previously painted walls.</p></div>
-        <div class="line-card has-image"><img class="line-card-img" src="images/brands/DiamondShine.png" alt="Diamond Shine" loading="lazy"><h4>Diamond Shine</h4><span class="packs">1L · 4L · 10L · 20L · White + Dark Base 10/17/22</span><p>Our best-performing Shine emulsion, matched to the Diamond primer system.</p></div>
+        <button type="button" class="line-card has-image brand-open" onclick="openShadeDialog('dlg-dshine')"><img class="line-card-img" src="images/brands/DShine.png" alt="D-Shine" loading="lazy"><h4>D-Shine</h4><span class="packs">1L · 4L · 10L · 20L · White + Dark Base 10/17/22</span><p>Our entry Shine-family emulsion — smooth lay-off, easy touch-up.</p><span class="go">View product →</span></button>
+        <button type="button" class="line-card has-image brand-open" onclick="openShadeDialog('dlg-diamondshine')"><img class="line-card-img" src="images/brands/DiamondShine.png" alt="Diamond Shine" loading="lazy"><h4>Diamond Shine</h4><span class="packs">1L · 4L · 10L · 20L · White + Dark Base 10/17/22</span><p>Our best-performing Shine emulsion, matched to the Diamond primer system.</p><span class="go">View product →</span></button>
       </div>
+
+      <dialog class="shade-dialog" id="dlg-dshine">
+        <div class="shade-dialog-inner">
+          <div class="shade-dialog-hero">
+            <img class="shade-dialog-photo" src="images/brands/photos/DShinePhoto.jpg" alt="D-Shine bucket">
+            <div class="shade-dialog-topbar">
+              <button type="button" class="shade-dialog-back" onclick="closeShadeDialog('dlg-dshine')">← Back to range</button>
+              <button type="button" class="shade-dialog-close" onclick="closeShadeDialog('dlg-dshine')" aria-label="Close">✕</button>
+            </div>
+          </div>
+          <div class="shade-dialog-scroll">
+            <div class="shade-dialog-body spec-dialog-body">
+              <span class="tag">Topcoat · Interior/Exterior</span>
+              <h3>D-Shine</h3>
+              <p class="spec-desc">Our entry Shine-family emulsion — smooth lay-off, easy touch-up, and a soft even sheen for everyday interior and exterior work.</p>
+              <div class="spec-facts">
+                <div class="spec-fact"><strong>Pack sizes</strong><span>1L · 4L · 10L · 20L</span></div>
+                <div class="spec-fact"><strong>Base</strong><span>Water-based acrylic, White + Dark Base 10/17/22</span></div>
+                <div class="spec-fact"><strong>Finish</strong><span>Soft, even sheen</span></div>
+                <div class="spec-fact"><strong>Best for</strong><span>Everyday interior &amp; exterior topcoats</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </dialog>
+
+      <dialog class="shade-dialog" id="dlg-diamondshine">
+        <div class="shade-dialog-inner">
+          <div class="shade-dialog-hero">
+            <img class="shade-dialog-photo" src="images/brands/photos/DiamondShinePhoto.jpg" alt="Diamond Shine bucket">
+            <div class="shade-dialog-topbar">
+              <button type="button" class="shade-dialog-back" onclick="closeShadeDialog('dlg-diamondshine')">← Back to range</button>
+              <button type="button" class="shade-dialog-close" onclick="closeShadeDialog('dlg-diamondshine')" aria-label="Close">✕</button>
+            </div>
+          </div>
+          <div class="shade-dialog-scroll">
+            <div class="shade-dialog-body spec-dialog-body">
+              <span class="tag">Topcoat · Interior/Exterior</span>
+              <h3>Diamond Shine</h3>
+              <p class="spec-desc">Our best-performing Shine emulsion, matched to the Diamond primer system for maximum hide and a lasting finish.</p>
+              <div class="spec-facts">
+                <div class="spec-fact"><strong>Pack sizes</strong><span>1L · 4L · 10L · 20L</span></div>
+                <div class="spec-fact"><strong>Base</strong><span>Water-based acrylic, White + Dark Base 10/17/22</span></div>
+                <div class="spec-fact"><strong>Finish</strong><span>Rich, even sheen</span></div>
+                <div class="spec-fact"><strong>Best for</strong><span>Premium residential &amp; exterior finishes</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </dialog>
     </div>
 
     <!-- EMULSIONS APEX -->
@@ -133,8 +628,33 @@
         <p>Our top-tier acrylic emulsion — formulated for maximum washability, a richer sheen, and a longer repaint cycle than the standard Shine range.</p>
       </div>
       <div class="line-grid">
-        <div class="line-card has-image"><img class="line-card-img" src="images/brands/ClassicShineApex.png" alt="Classic Shine — Apex" loading="lazy"><h4>Classic Shine — Apex</h4><span class="packs">1L · 4L · 10L · 20L</span><p>The flagship Apex finish — specified for premium residential interiors and exteriors.</p></div>
+        <button type="button" class="line-card has-image brand-open" onclick="openShadeDialog('dlg-classicapex')"><img class="line-card-img" src="images/brands/ClassicShineApex.png" alt="Classic Shine — Apex" loading="lazy"><h4>Classic Shine — Apex</h4><span class="packs">1L · 4L · 10L · 20L</span><p>The flagship Apex finish — specified for premium residential interiors and exteriors.</p><span class="go">View product →</span></button>
       </div>
+
+      <dialog class="shade-dialog" id="dlg-classicapex">
+        <div class="shade-dialog-inner">
+          <div class="shade-dialog-hero">
+            <img class="shade-dialog-photo" src="images/brands/photos/ClassicShineApexPhoto.jpg" alt="Classic Shine — Apex bucket">
+            <div class="shade-dialog-topbar">
+              <button type="button" class="shade-dialog-back" onclick="closeShadeDialog('dlg-classicapex')">← Back to range</button>
+              <button type="button" class="shade-dialog-close" onclick="closeShadeDialog('dlg-classicapex')" aria-label="Close">✕</button>
+            </div>
+          </div>
+          <div class="shade-dialog-scroll">
+            <div class="shade-dialog-body spec-dialog-body">
+              <span class="tag">Topcoat · Premium</span>
+              <h3>Classic Shine — Apex</h3>
+              <p class="spec-desc">The flagship Apex finish — formulated for maximum washability and a richer sheen, specified for premium residential interiors and exteriors.</p>
+              <div class="spec-facts">
+                <div class="spec-fact"><strong>Pack sizes</strong><span>1L · 4L · 10L · 20L</span></div>
+                <div class="spec-fact"><strong>Base</strong><span>Premium water-based acrylic</span></div>
+                <div class="spec-fact"><strong>Finish</strong><span>Rich sheen, highly washable</span></div>
+                <div class="spec-fact"><strong>Best for</strong><span>Premium residential interiors &amp; exteriors</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </dialog>
     </div>
 
     <!-- DELUXE COLOUR EMULSION -->
@@ -164,7 +684,7 @@
       <dialog class="shade-dialog" id="dlg-weathergard">
         <div class="shade-dialog-inner">
           <div class="shade-dialog-hero">
-            <img class="shade-dialog-photo" src="images/brands/WeatherGard.png" alt="Weather Gard">
+            <img class="shade-dialog-photo" src="images/brands/photos/WeatherGardPhoto.jpg" alt="Weather Gard bucket">
             <div class="shade-dialog-topbar">
               <button type="button" class="shade-dialog-back" onclick="closeShadeDialog('dlg-weathergard')">← Back to range</button>
               <button type="button" class="shade-dialog-close" onclick="closeShadeDialog('dlg-weathergard')" aria-label="Close">✕</button>
@@ -194,7 +714,7 @@
       <dialog class="shade-dialog" id="dlg-deluxe-emulsion">
         <div class="shade-dialog-inner">
           <div class="shade-dialog-hero">
-            <img class="shade-dialog-photo" src="images/brands/Deluxe.png" alt="Deluxe">
+            <img class="shade-dialog-photo" src="images/brands/photos/DeluxeEmulsionPhoto.jpg" alt="Deluxe bucket">
             <div class="shade-dialog-topbar">
               <button type="button" class="shade-dialog-back" onclick="closeShadeDialog('dlg-deluxe-emulsion')">← Back to range</button>
               <button type="button" class="shade-dialog-close" onclick="closeShadeDialog('dlg-deluxe-emulsion')" aria-label="Close">✕</button>
@@ -233,19 +753,241 @@
         <p>A cement- or acrylic-based paste that fills cracks, levels surfaces and lowers porosity — the difference between a topcoat that looks flat and one that looks poured.</p>
       </div>
       <div class="line-grid">
-        <div class="line-card has-image"><img class="line-card-img" src="images/brands/3DWallPutty.png" alt="3D Wall Putty" loading="lazy"><h4>3D Wall Putty</h4><span class="packs">10kg · 20kg · 25kg</span><p>Our high-volume general-purpose putty, in Red and Green grade variants.</p></div>
-        <div class="line-card has-image"><img class="line-card-img" src="images/brands/3DAquaShine.png" alt="3D Aqua Shine" loading="lazy"><h4>3D Aqua Shine</h4><span class="packs">10kg · 20kg</span><p>A water-resistant putty grade for damp-prone interior walls.</p></div>
-        <div class="line-card has-image"><img class="line-card-img" src="images/brands/3DMagicWall.png" alt="3D Magic Wall" loading="lazy"><h4>3D Magic Wall</h4><span class="packs">20kg</span><p>Extra-fine finishing putty for a glass-smooth final surface.</p></div>
-        <div class="line-card has-image"><img class="line-card-img" src="images/brands/3DMarblePutty.png" alt="3D Marble Putty" loading="lazy"><h4>3D Marble Putty</h4><span class="packs">20kg · 25kg</span><p>A marble-dust-based putty prized for hardness and polish.</p></div>
-        <div class="line-card has-image"><img class="line-card-img" src="images/brands/3DSunShine.png" alt="3D Sun Shine" loading="lazy"><h4>3D Sun Shine</h4><span class="packs">25kg</span><p>UV-stable putty formulated for use under exterior topcoats.</p></div>
-        <div class="line-card has-image"><img class="line-card-img" src="images/brands/4XWallPutty.png" alt="4X Wall Putty" loading="lazy"><h4>4X Wall Putty</h4><span class="packs">25kg</span><p>Our value four-times-coverage claim putty for large sites.</p></div>
-        <div class="line-card has-image"><img class="line-card-img" src="images/brands/AquaShine.png" alt="Aqua Shine" loading="lazy"><h4>Aqua Shine</h4><span class="packs">10kg · 20kg</span><p>The standard-tier water-resistant putty line.</p></div>
-        <div class="line-card has-image"><img class="line-card-img" src="images/brands/ASHAWallPutty.png" alt="ASHA Wall Putty" loading="lazy"><h4>ASHA Wall Putty</h4><span class="packs">20kg</span><p>Depot best-seller — dependable coverage at contractor pricing.</p></div>
-        <div class="line-card has-image"><img class="line-card-img" src="images/brands/GlowShine.png" alt="Glow Shine" loading="lazy"><h4>Glow Shine</h4><span class="packs">20kg</span><p>A polished-finish putty that carries a visible sheen once cured.</p></div>
-        <div class="line-card has-image"><img class="line-card-img" src="images/brands/NO1WallPutty.png" alt="NO.1 Wall Putty" loading="lazy"><h4>NO.1 Wall Putty</h4><span class="packs">1kg · 20kg</span><p>Our flagship general-purpose putty, sold loose and in multipacks.</p></div>
-        <div class="line-card has-image"><img class="line-card-img" src="images/brands/RolexWallPutty.png" alt="Rolex Wall Putty" loading="lazy"><h4>Rolex Wall Putty</h4><span class="packs">10kg · 20kg</span><p>Mid-premium putty positioned for repaint and renovation work.</p></div>
-        <div class="line-card has-image"><img class="line-card-img" src="images/brands/RoyalGoldPutty.png" alt="Royal Gold Putty" loading="lazy"><h4>Royal Gold Putty</h4><span class="packs">20kg</span><p>Our top-tier putty grade, specified where surface finish matters most.</p></div>
+        <button type="button" class="line-card has-image brand-open" onclick="openShadeDialog('dlg-magicwall')"><img class="line-card-img" src="images/brands/3DMagicWall.png" alt="3D Magic Wall" loading="lazy"><h4>3D Magic Wall</h4><span class="packs">20kg</span><p>Extra-fine finishing putty for a glass-smooth final surface.</p><span class="go">View product →</span></button>
+        <button type="button" class="line-card has-image brand-open" onclick="openShadeDialog('dlg-marbleputty')"><img class="line-card-img" src="images/brands/3DMarblePutty.png" alt="3D Marble Putty" loading="lazy"><h4>3D Marble Putty</h4><span class="packs">20kg · 25kg</span><p>A marble-dust-based putty prized for hardness and polish.</p><span class="go">View product →</span></button>
+        <button type="button" class="line-card has-image brand-open" onclick="openShadeDialog('dlg-sunshine')"><img class="line-card-img" src="images/brands/3DSunShine.png" alt="Sun Shine" loading="lazy"><h4>Sun Shine</h4><span class="packs">25kg</span><p>UV-stable putty formulated for use under exterior topcoats.</p><span class="go">View product →</span></button>
+        <button type="button" class="line-card has-image brand-open" onclick="openShadeDialog('dlg-aquashine')"><img class="line-card-img" src="images/brands/AquaShine.png" alt="Aqua Shine" loading="lazy"><h4>Aqua Shine</h4><span class="packs">10kg · 20kg</span><p>The standard-tier water-resistant putty line.</p><span class="go">View product →</span></button>
+        <button type="button" class="line-card has-image brand-open" onclick="openShadeDialog('dlg-ashaputty')"><img class="line-card-img" src="images/brands/ASHAWallPutty.png" alt="ASHA Wall Putty" loading="lazy"><h4>ASHA Wall Putty</h4><span class="packs">20kg</span><p>Depot best-seller — dependable coverage at contractor pricing.</p><span class="go">View product →</span></button>
+        <button type="button" class="line-card has-image brand-open" onclick="openShadeDialog('dlg-glowshine')"><img class="line-card-img" src="images/brands/GlowShine.png" alt="Glow Shine" loading="lazy"><h4>Glow Shine</h4><span class="packs">20kg</span><p>A polished-finish putty that carries a visible sheen once cured.</p><span class="go">View product →</span></button>
+        <button type="button" class="line-card has-image brand-open" onclick="openShadeDialog('dlg-no1putty')"><img class="line-card-img" src="images/brands/NO1WallPutty.png" alt="NO.1 Wall Putty" loading="lazy"><h4>NO.1 Wall Putty</h4><span class="packs">1kg · 20kg</span><p>Our flagship general-purpose putty, sold loose and in multipacks.</p><span class="go">View product →</span></button>
+        <button type="button" class="line-card has-image brand-open" onclick="openShadeDialog('dlg-rolexputty')"><img class="line-card-img" src="images/brands/RolexWallPutty.png" alt="Rolex Wall Putty" loading="lazy"><h4>Rolex Wall Putty</h4><span class="packs">10kg · 20kg</span><p>Mid-premium putty positioned for repaint and renovation work.</p><span class="go">View product →</span></button>
+        <button type="button" class="line-card has-image brand-open" onclick="openShadeDialog('dlg-royalgold')"><img class="line-card-img" src="images/brands/RoyalGoldPutty.png" alt="Royal Gold Putty" loading="lazy"><h4>Royal Gold Putty</h4><span class="packs">20kg</span><p>Our top-tier putty grade, specified where surface finish matters most.</p><span class="go">View product →</span></button>
       </div>
+
+      <dialog class="shade-dialog" id="dlg-magicwall">
+        <div class="shade-dialog-inner">
+          <div class="shade-dialog-hero">
+            <img class="shade-dialog-photo" src="images/brands/photos/3DMagicWallPhoto.jpg" alt="3D Magic Wall bucket">
+            <div class="shade-dialog-topbar">
+              <button type="button" class="shade-dialog-back" onclick="closeShadeDialog('dlg-magicwall')">← Back to range</button>
+              <button type="button" class="shade-dialog-close" onclick="closeShadeDialog('dlg-magicwall')" aria-label="Close">✕</button>
+            </div>
+          </div>
+          <div class="shade-dialog-scroll">
+            <div class="shade-dialog-body spec-dialog-body">
+              <span class="tag">Base Coat · Finishing Putty</span>
+              <h3>3D Magic Wall</h3>
+              <p class="spec-desc">Extra-fine finishing putty for a glass-smooth final surface — the last skim coat before primer on premium interior walls.</p>
+              <div class="spec-facts">
+                <div class="spec-fact"><strong>Pack sizes</strong><span>20kg</span></div>
+                <div class="spec-fact"><strong>Base</strong><span>Acrylic (PGP)</span></div>
+                <div class="spec-fact"><strong>Finish</strong><span>Ultra-smooth, fine-grain</span></div>
+                <div class="spec-fact"><strong>Best for</strong><span>Final skim coat on interior walls</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </dialog>
+
+      <dialog class="shade-dialog" id="dlg-marbleputty">
+        <div class="shade-dialog-inner">
+          <div class="shade-dialog-hero">
+            <img class="shade-dialog-photo" src="images/brands/photos/3DMarblePuttyPhoto.jpg" alt="3D Marble Putty bucket">
+            <div class="shade-dialog-topbar">
+              <button type="button" class="shade-dialog-back" onclick="closeShadeDialog('dlg-marbleputty')">← Back to range</button>
+              <button type="button" class="shade-dialog-close" onclick="closeShadeDialog('dlg-marbleputty')" aria-label="Close">✕</button>
+            </div>
+          </div>
+          <div class="shade-dialog-scroll">
+            <div class="shade-dialog-body spec-dialog-body">
+              <span class="tag">Base Coat · Premium Putty</span>
+              <h3>3D Marble Putty</h3>
+              <p class="spec-desc">A marble-dust-based putty prized for hardness and polish, giving walls a dense, durable base coat.</p>
+              <div class="spec-facts">
+                <div class="spec-fact"><strong>Pack sizes</strong><span>20kg · 25kg</span></div>
+                <div class="spec-fact"><strong>Base</strong><span>Emulsion-based acrylic, marble dust</span></div>
+                <div class="spec-fact"><strong>Finish</strong><span>Hard, polished</span></div>
+                <div class="spec-fact"><strong>Best for</strong><span>Interior walls needing extra hardness</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </dialog>
+
+      <dialog class="shade-dialog" id="dlg-sunshine">
+        <div class="shade-dialog-inner">
+          <div class="shade-dialog-hero">
+            <img class="shade-dialog-photo" src="images/brands/photos/SunShinePhoto.jpg" alt="Sun Shine bucket">
+            <div class="shade-dialog-topbar">
+              <button type="button" class="shade-dialog-back" onclick="closeShadeDialog('dlg-sunshine')">← Back to range</button>
+              <button type="button" class="shade-dialog-close" onclick="closeShadeDialog('dlg-sunshine')" aria-label="Close">✕</button>
+            </div>
+          </div>
+          <div class="shade-dialog-scroll">
+            <div class="shade-dialog-body spec-dialog-body">
+              <span class="tag">Base Coat · Exterior-Ready</span>
+              <h3>Sun Shine</h3>
+              <p class="spec-desc">UV-stable putty formulated for use under exterior topcoats, holding up to sun and weather exposure over time.</p>
+              <div class="spec-facts">
+                <div class="spec-fact"><strong>Pack sizes</strong><span>25kg</span></div>
+                <div class="spec-fact"><strong>Base</strong><span>Acrylic wall putty</span></div>
+                <div class="spec-fact"><strong>Finish</strong><span>Smooth, UV-stable</span></div>
+                <div class="spec-fact"><strong>Best for</strong><span>Under exterior topcoats</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </dialog>
+
+      <dialog class="shade-dialog" id="dlg-aquashine">
+        <div class="shade-dialog-inner">
+          <div class="shade-dialog-hero">
+            <img class="shade-dialog-photo" src="images/brands/photos/AquaShinePhoto.jpg" alt="Aqua Shine bucket">
+            <div class="shade-dialog-topbar">
+              <button type="button" class="shade-dialog-back" onclick="closeShadeDialog('dlg-aquashine')">← Back to range</button>
+              <button type="button" class="shade-dialog-close" onclick="closeShadeDialog('dlg-aquashine')" aria-label="Close">✕</button>
+            </div>
+          </div>
+          <div class="shade-dialog-scroll">
+            <div class="shade-dialog-body spec-dialog-body">
+              <span class="tag">Base Coat · Water-Resistant</span>
+              <h3>Aqua Shine</h3>
+              <p class="spec-desc">The standard-tier water-resistant putty line, suited to interior walls in damp-prone areas.</p>
+              <div class="spec-facts">
+                <div class="spec-fact"><strong>Pack sizes</strong><span>10kg · 20kg</span></div>
+                <div class="spec-fact"><strong>Base</strong><span>Emulsion-based acrylic</span></div>
+                <div class="spec-fact"><strong>Finish</strong><span>Smooth, water-resistant</span></div>
+                <div class="spec-fact"><strong>Best for</strong><span>Damp-prone interior walls</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </dialog>
+
+      <dialog class="shade-dialog" id="dlg-ashaputty">
+        <div class="shade-dialog-inner">
+          <div class="shade-dialog-hero">
+            <img class="shade-dialog-photo" src="images/brands/photos/ASHAWallPuttyPhoto.jpg" alt="ASHA Wall Putty bucket">
+            <div class="shade-dialog-topbar">
+              <button type="button" class="shade-dialog-back" onclick="closeShadeDialog('dlg-ashaputty')">← Back to range</button>
+              <button type="button" class="shade-dialog-close" onclick="closeShadeDialog('dlg-ashaputty')" aria-label="Close">✕</button>
+            </div>
+          </div>
+          <div class="shade-dialog-scroll">
+            <div class="shade-dialog-body spec-dialog-body">
+              <span class="tag">Base Coat · Value</span>
+              <h3>ASHA Wall Putty</h3>
+              <p class="spec-desc">Depot best-seller — dependable coverage at contractor pricing, from the ASHA Paints "Take Care" line.</p>
+              <div class="spec-facts">
+                <div class="spec-fact"><strong>Pack sizes</strong><span>20kg</span></div>
+                <div class="spec-fact"><strong>Base</strong><span>Water-based acrylic</span></div>
+                <div class="spec-fact"><strong>Finish</strong><span>Ultra-smooth surface</span></div>
+                <div class="spec-fact"><strong>Best for</strong><span>General contractor-grade jobs</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </dialog>
+
+      <dialog class="shade-dialog" id="dlg-glowshine">
+        <div class="shade-dialog-inner">
+          <div class="shade-dialog-hero">
+            <img class="shade-dialog-photo" src="images/brands/photos/GlowShinePhoto.jpg" alt="Glow Shine bucket">
+            <div class="shade-dialog-topbar">
+              <button type="button" class="shade-dialog-back" onclick="closeShadeDialog('dlg-glowshine')">← Back to range</button>
+              <button type="button" class="shade-dialog-close" onclick="closeShadeDialog('dlg-glowshine')" aria-label="Close">✕</button>
+            </div>
+          </div>
+          <div class="shade-dialog-scroll">
+            <div class="shade-dialog-body spec-dialog-body">
+              <span class="tag">Base Coat · Undercoat</span>
+              <h3>Glow Shine</h3>
+              <p class="spec-desc">A polished-finish putty that carries a visible sheen once cured — the PGP emulsion-base undercoat wall putty.</p>
+              <div class="spec-facts">
+                <div class="spec-fact"><strong>Pack sizes</strong><span>20kg</span></div>
+                <div class="spec-fact"><strong>Base</strong><span>PGP emulsion base</span></div>
+                <div class="spec-fact"><strong>Finish</strong><span>Polished, visible sheen</span></div>
+                <div class="spec-fact"><strong>Best for</strong><span>Undercoat before topcoat</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </dialog>
+
+      <dialog class="shade-dialog" id="dlg-no1putty">
+        <div class="shade-dialog-inner">
+          <div class="shade-dialog-hero">
+            <img class="shade-dialog-photo" src="images/brands/photos/NO1WallPuttyPhoto.jpg" alt="NO.1 Wall Putty bucket">
+            <div class="shade-dialog-topbar">
+              <button type="button" class="shade-dialog-back" onclick="closeShadeDialog('dlg-no1putty')">← Back to range</button>
+              <button type="button" class="shade-dialog-close" onclick="closeShadeDialog('dlg-no1putty')" aria-label="Close">✕</button>
+            </div>
+          </div>
+          <div class="shade-dialog-scroll">
+            <div class="shade-dialog-body spec-dialog-body">
+              <span class="tag">Base Coat · Flagship</span>
+              <h3>NO.1 Wall Putty</h3>
+              <p class="spec-desc">Our flagship general-purpose putty, sold loose and in multipacks — the "Excellent" PGP-grade acrylic wall putty.</p>
+              <div class="spec-facts">
+                <div class="spec-fact"><strong>Pack sizes</strong><span>1kg · 20kg</span></div>
+                <div class="spec-fact"><strong>Base</strong><span>PGP acrylic</span></div>
+                <div class="spec-fact"><strong>Finish</strong><span>Smooth, general-purpose</span></div>
+                <div class="spec-fact"><strong>Best for</strong><span>Everyday interior &amp; exterior walls</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </dialog>
+
+      <dialog class="shade-dialog" id="dlg-rolexputty">
+        <div class="shade-dialog-inner">
+          <div class="shade-dialog-hero">
+            <img class="shade-dialog-photo" src="images/brands/photos/RolexWallPuttyPhoto.jpg" alt="Rolex Wall Putty bucket">
+            <div class="shade-dialog-topbar">
+              <button type="button" class="shade-dialog-back" onclick="closeShadeDialog('dlg-rolexputty')">← Back to range</button>
+              <button type="button" class="shade-dialog-close" onclick="closeShadeDialog('dlg-rolexputty')" aria-label="Close">✕</button>
+            </div>
+          </div>
+          <div class="shade-dialog-scroll">
+            <div class="shade-dialog-body spec-dialog-body">
+              <span class="tag">Base Coat · Mid-Premium</span>
+              <h3>Rolex Wall Putty</h3>
+              <p class="spec-desc">Mid-premium putty positioned for repaint and renovation work — the Rolex Plus smooth-finish emulsion-based line.</p>
+              <div class="spec-facts">
+                <div class="spec-fact"><strong>Pack sizes</strong><span>10kg · 20kg</span></div>
+                <div class="spec-fact"><strong>Base</strong><span>Emulsion-based</span></div>
+                <div class="spec-fact"><strong>Finish</strong><span>Smooth finish</span></div>
+                <div class="spec-fact"><strong>Best for</strong><span>Repaint &amp; renovation jobs</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </dialog>
+
+      <dialog class="shade-dialog" id="dlg-royalgold">
+        <div class="shade-dialog-inner">
+          <div class="shade-dialog-hero">
+            <img class="shade-dialog-photo" src="images/brands/photos/RoyalGoldPuttyPhoto.jpg" alt="Royal Gold Putty bucket">
+            <div class="shade-dialog-topbar">
+              <button type="button" class="shade-dialog-back" onclick="closeShadeDialog('dlg-royalgold')">← Back to range</button>
+              <button type="button" class="shade-dialog-close" onclick="closeShadeDialog('dlg-royalgold')" aria-label="Close">✕</button>
+            </div>
+          </div>
+          <div class="shade-dialog-scroll">
+            <div class="shade-dialog-body spec-dialog-body">
+              <span class="tag">Base Coat · Top-Tier</span>
+              <h3>Royal Gold Putty</h3>
+              <p class="spec-desc">Our top-tier putty grade, specified where surface finish matters most.</p>
+              <div class="spec-facts">
+                <div class="spec-fact"><strong>Pack sizes</strong><span>20kg</span></div>
+                <div class="spec-fact"><strong>Base</strong><span>Acrylic wall putty</span></div>
+                <div class="spec-fact"><strong>Finish</strong><span>Premium smooth finish</span></div>
+                <div class="spec-fact"><strong>Best for</strong><span>High-finish interior specifications</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </dialog>
     </div>
 
     <!-- POP -->
@@ -259,9 +1001,59 @@
         <p>Plaster of Paris and zinc-based compounds for false ceilings, cornices, and the fine detailing work that putty alone can't achieve.</p>
       </div>
       <div class="line-grid">
-        <div class="line-card has-image"><img class="line-card-img" src="images/brands/POPStandard.png" alt="POP — Standard" loading="lazy"><h4>POP — Standard</h4><span class="packs">1kg · 3kg · 5kg · 25kg bags</span><p>General-purpose Plaster of Paris for ceiling work and moulding.</p></div>
-        <div class="line-card has-image"><img class="line-card-img" src="images/brands/ZincCompound.png" alt="Zinc Compound" loading="lazy"><h4>Zinc Compound</h4><span class="packs">450g · 30-unit box</span><p>Fine-detail finishing compound for cornices and decorative trim.</p></div>
+        <button type="button" class="line-card has-image brand-open" onclick="openShadeDialog('dlg-popstandard')"><img class="line-card-img" src="images/brands/POPStandard.png" alt="POP — Standard" loading="lazy"><h4>POP — Standard</h4><span class="packs">1kg · 3kg · 5kg · 25kg bags</span><p>General-purpose Plaster of Paris for ceiling work and moulding.</p><span class="go">View product →</span></button>
+        <button type="button" class="line-card has-image brand-open" onclick="openShadeDialog('dlg-zinccompound')"><img class="line-card-img" src="images/brands/ZincCompound.png" alt="Zinc Compound" loading="lazy"><h4>Zinc Compound</h4><span class="packs">450g · 30-unit box</span><p>Fine-detail finishing compound for cornices and decorative trim.</p><span class="go">View product →</span></button>
       </div>
+
+      <dialog class="shade-dialog" id="dlg-popstandard">
+        <div class="shade-dialog-inner">
+          <div class="shade-dialog-hero">
+            <img class="shade-dialog-photo" src="images/brands/photos/POPStandardPhoto.jpg" alt="POP — Standard bag">
+            <div class="shade-dialog-topbar">
+              <button type="button" class="shade-dialog-back" onclick="closeShadeDialog('dlg-popstandard')">← Back to range</button>
+              <button type="button" class="shade-dialog-close" onclick="closeShadeDialog('dlg-popstandard')" aria-label="Close">✕</button>
+            </div>
+          </div>
+          <div class="shade-dialog-scroll">
+            <div class="shade-dialog-body spec-dialog-body">
+              <span class="tag">Base Coat · Ceiling</span>
+              <h3>POP — Standard</h3>
+              <p class="spec-desc">General-purpose Plaster of Paris (gypsum powder) for ceiling work, cornices and moulding detail.</p>
+              <div class="spec-facts">
+                <div class="spec-fact"><strong>Pack sizes</strong><span>1kg · 3kg · 5kg · 25kg bags</span></div>
+                <div class="spec-fact"><strong>Base</strong><span>Gypsum powder</span></div>
+                <div class="spec-fact"><strong>Finish</strong><span>Smooth, moulded</span></div>
+                <div class="spec-fact"><strong>Best for</strong><span>False ceilings, cornices &amp; moulding</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </dialog>
+
+      <dialog class="shade-dialog" id="dlg-zinccompound">
+        <div class="shade-dialog-inner">
+          <div class="shade-dialog-hero">
+            <img class="shade-dialog-photo" src="images/brands/photos/ZincCompoundPhoto.jpg" alt="Zinc Compound bag">
+            <div class="shade-dialog-topbar">
+              <button type="button" class="shade-dialog-back" onclick="closeShadeDialog('dlg-zinccompound')">← Back to range</button>
+              <button type="button" class="shade-dialog-close" onclick="closeShadeDialog('dlg-zinccompound')" aria-label="Close">✕</button>
+            </div>
+          </div>
+          <div class="shade-dialog-scroll">
+            <div class="shade-dialog-body spec-dialog-body">
+              <span class="tag">Base Coat · Detail Work</span>
+              <h3>Zinc Compound</h3>
+              <p class="spec-desc">Fine-detail finishing compound for cornices and decorative trim, where putty alone can't hold the detail.</p>
+              <div class="spec-facts">
+                <div class="spec-fact"><strong>Pack sizes</strong><span>450g · 30-unit box</span></div>
+                <div class="spec-fact"><strong>Base</strong><span>Zinc-based compound</span></div>
+                <div class="spec-fact"><strong>Finish</strong><span>Fine, detailed</span></div>
+                <div class="spec-fact"><strong>Best for</strong><span>Cornices &amp; decorative trim</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </dialog>
     </div>
 
     <!-- LUXE METALLICS -->
@@ -306,7 +1098,7 @@
       <dialog class="shade-dialog" id="dlg-asha">
         <div class="shade-dialog-inner">
           <div class="shade-dialog-hero">
-            <img class="shade-dialog-photo" src="images/brands/ASHA.png" alt="ASHA">
+            <img class="shade-dialog-photo" src="images/brands/photos/AshaDistemperPhoto.jpg" alt="ASHA Distemper bucket">
             <div class="shade-dialog-topbar">
               <button type="button" class="shade-dialog-back" onclick="closeShadeDialog('dlg-asha')">← Back to range</button>
               <button type="button" class="shade-dialog-close" onclick="closeShadeDialog('dlg-asha')" aria-label="Close">✕</button>
@@ -340,7 +1132,7 @@
       <dialog class="shade-dialog" id="dlg-classic">
         <div class="shade-dialog-inner">
           <div class="shade-dialog-hero">
-            <img class="shade-dialog-photo" src="images/brands/Classic.png" alt="Classic">
+            <img class="shade-dialog-photo" src="images/brands/photos/ClassicDistemperPhoto.jpg" alt="Classic Distemper bucket">
             <div class="shade-dialog-topbar">
               <button type="button" class="shade-dialog-back" onclick="closeShadeDialog('dlg-classic')">← Back to range</button>
               <button type="button" class="shade-dialog-close" onclick="closeShadeDialog('dlg-classic')" aria-label="Close">✕</button>
@@ -394,7 +1186,7 @@
     <div class="footer-grid">
       <div>
         <a href="index.html" class="brand" style="margin-bottom:16px;display:flex;">
-          <img src="images/logo.jpeg" alt="Diamond Paints logo" class="brand-mark">
+          <span class="brand-mark" aria-hidden="true"></span>
           <span class="brand-word">DIAMOND PAINTS</span>
         </a>
         <p style="max-width:280px;font-size:13.5px;line-height:1.6;">Manufacturers of interior &amp; exterior emulsions, primers, wall putty, POP and decorative finishes.</p>
