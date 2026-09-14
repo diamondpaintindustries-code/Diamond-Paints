@@ -62,22 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
     counters.forEach(c => cio.observe(c));
   }
 
-  /* ---- logo mouse parallax (hero) ---- */
-  const logoCoin = document.querySelector('.logo-coin');
-  const logoStage = document.querySelector('.logo-stage');
-  if (logoCoin && logoStage) {
-    logoStage.addEventListener('mousemove', (e) => {
-      const r = logoStage.getBoundingClientRect();
-      const px = (e.clientX - r.left) / r.width - 0.5;
-      const py = (e.clientY - r.top) / r.height - 0.5;
-      logoCoin.style.animationPlayState = 'paused';
-      logoCoin.style.transform = `translateY(-6px) rotateY(${px * 46}deg) rotateX(${6 - py * 32}deg)`;
-    });
-    logoStage.addEventListener('mouseleave', () => {
-      logoCoin.style.animationPlayState = 'running';
-      logoCoin.style.transform = '';
-    });
-  }
+  /* (legacy logo-coin parallax removed — hero now uses a static badge) */
 
   /* ---- tilt on cards ---- */
   document.querySelectorAll('.cat-card').forEach(card => {
