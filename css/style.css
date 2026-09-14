@@ -560,41 +560,23 @@ body.home .nav.nav-overlay.nav-in{
   overflow:hidden;
   background:#0b0e14;
 }
-#intro-canvas{ position:absolute; inset:0; width:100%; height:100%; display:block; }
 
-.cinema-veil{
-  position:absolute; inset:0; background:#fff6e6; opacity:0;
-  pointer-events:none; transition:opacity .1s linear; z-index:2;
+/* Real villa footage, full-bleed. Plays clean and undimmed for the first
+   5 seconds; a scrim fades in only once the homepage content reveals,
+   so the text stays readable while the video keeps looping behind it. */
+.hero-video{
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; display:block;
 }
+.hero-video-scrim{
+  position:absolute; inset:0; z-index:1; pointer-events:none;
+  background: linear-gradient(180deg, rgba(10,14,18,.15) 0%, rgba(10,14,18,.35) 55%, rgba(10,14,18,.65) 100%);
+  opacity:0; transition:opacity 1.4s var(--ease);
+}
+#cinema-hero.revealed .hero-video-scrim{ opacity:1; }
 
-.intro-loading{
-  position:absolute; inset:0; z-index:3;
-  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px;
-  color:#fff; opacity:1; transition:opacity .5s ease;
-}
-.intro-loading span{
-  font-family:var(--f-mono); font-size:11px; letter-spacing:.32em; color:rgba(255,255,255,.8);
-}
-.intro-spinner{
-  width:36px; height:36px; border-radius:50%;
-  border:2px solid rgba(255,255,255,.16); border-top-color:#d7b56d;
-  animation:introspin .9s linear infinite;
-}
-@keyframes introspin{ to{ transform:rotate(360deg); } }
-
-.intro-skip{
-  position:absolute; top:24px; right:24px; z-index:5;
-  background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.35); color:#fff;
-  font-family:var(--f-mono); font-size:11px; letter-spacing:.06em;
-  padding:10px 18px; border-radius:999px; cursor:pointer;
-  backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
-  opacity:0; transition:opacity .4s ease, background .2s ease;
-}
-.intro-skip.show{ opacity:1; }
-.intro-skip:hover{ background:rgba(255,255,255,.2); }
-
-/* Homepage hero content — hidden until the camera has arrived inside,
-   then eases in over the lit interior. */
+/* Homepage hero content — hidden for the first 5 seconds while the video
+   plays undistracted, then eases in over the dimmed, looping footage. */
 .cinema-content{
   position:absolute; inset:0; z-index:3;
   display:flex; flex-direction:column; align-items:center; justify-content:center;
@@ -644,21 +626,11 @@ body.home .nav.nav-overlay.nav-in{
 
 body.intro-lock{ overflow:hidden; height:100vh; }
 
-/* Fallback state: reduced motion, repeat session visits, or a failed WebGL
-   load. No canvas — a calm static backdrop with content shown immediately. */
-#cinema-hero.static-ready{
-  background: radial-gradient(circle at 28% 18%, #1a2b24, #0b0e14 62%);
-  display:flex; align-items:center; justify-content:center;
-}
-#cinema-hero.static-ready .cinema-content{ position:relative; opacity:1; transform:none; pointer-events:auto; }
-#cinema-hero.static-ready .scroll-cue{ display:none; }
-
 @media (max-width:640px){
-  .intro-skip{ top:16px; right:16px; padding:8px 14px; }
   .cinema-content p{ font-size:15px; }
 }
 
 @media (prefers-reduced-motion: reduce){
-  #intro-canvas, .intro-loading, .intro-skip, .scroll-cue{ display:none !important; }
-  #cinema-hero{ height:auto; min-height:0; }
+  .hero-video{ display:none; }
+  #cinema-hero{ background: radial-gradient(circle at 28% 18%, #1a2b24, #0b0e14 62%); }
 }
