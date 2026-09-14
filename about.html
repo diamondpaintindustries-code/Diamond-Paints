@@ -7,6 +7,27 @@
 <meta name="description" content="The story behind Diamond Paints — from a small formulation unit to a nine-line paint, primer and putty manufacturer.">
 <link rel="icon" type="image/png" href="images/favicon.png">
 <link rel="stylesheet" href="css/style.css">
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyCwrRdNctx65YdFb_jzEzg0zG59SCruEec",
+      authDomain: "diamond-paints-4dc4c.firebaseapp.com",
+      projectId: "diamond-paints-4dc4c",
+      storageBucket: "diamond-paints-4dc4c.firebasestorage.app",
+      messagingSenderId: "1033486065896",
+      appId: "1:1033486065896:web:2b772708ad2bbb7b9d695d",
+      measurementId: "G-JZHRYMHL9F"
+    };
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
 </head>
 <body>
 
@@ -14,7 +35,7 @@
 <nav class="nav">
   <div class="nav-inner">
     <a href="index.html" class="brand">
-      <img src="images/logo.jpeg" alt="Diamond Paints logo" class="brand-mark">
+      <span class="brand-mark" aria-hidden="true"></span>
       <span class="brand-word">DIAMOND PAINTS<small>Cut for Brilliance</small></span>
     </a>
     <div class="nav-links">
@@ -133,7 +154,7 @@
     <div class="footer-grid">
       <div>
         <a href="index.html" class="brand" style="margin-bottom:16px;display:flex;">
-          <img src="images/logo.jpeg" alt="Diamond Paints logo" class="brand-mark">
+          <span class="brand-mark" aria-hidden="true"></span>
           <span class="brand-word">DIAMOND PAINTS</span>
         </a>
         <p style="max-width:280px;font-size:13.5px;line-height:1.6;">Manufacturers of interior &amp; exterior emulsions, primers, wall putty, POP and decorative finishes.</p>
